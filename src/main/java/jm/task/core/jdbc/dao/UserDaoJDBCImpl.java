@@ -15,6 +15,9 @@ public class UserDaoJDBCImpl implements UserDao {
 
     }
 
+    /**
+     * метод Создание таблицы User(ов)
+     * */
    public void createUsersTable() {
         try (Statement statement = connection.createStatement()) {
 
@@ -27,6 +30,9 @@ public class UserDaoJDBCImpl implements UserDao {
         }
     }
 
+    /**
+     * метод Удаление таблицы
+     * */
     public void dropUsersTable() {
         try (Statement statement = connection.createStatement()) {
 
@@ -36,6 +42,9 @@ public class UserDaoJDBCImpl implements UserDao {
         }
     }
 
+    /**
+     * метод Добавление 4 User(ов) в таблицу
+     * */
     public void saveUser(String name, String lastName, byte age) {
         try (PreparedStatement statement = connection.prepareStatement("INSERT INTO users (name, lastname, age) " +
                 "VALUES(?, ?, ?)")) {
@@ -50,6 +59,9 @@ public class UserDaoJDBCImpl implements UserDao {
         }
     }
 
+    /**
+     * метод удаления Юзера по id
+     * */
     public void removeUserById(long id) {
         try (PreparedStatement statement = connection.prepareStatement("DELETE FROM users WHERE id = ?")) {
             statement.setLong(1, id);
@@ -60,6 +72,9 @@ public class UserDaoJDBCImpl implements UserDao {
         }
     }
 
+    /**
+     * метод Получение всех User из базы и вывод в консоль (должен быть переопределен toString в классе User)
+     * */
     public List<User> getAllUsers() {
         List<User> userList = new ArrayList<>();
 
@@ -82,6 +97,9 @@ public class UserDaoJDBCImpl implements UserDao {
         return userList;
     }
 
+    /**
+     * метод Очистка таблицы User(ов)
+     * */
     public void cleanUsersTable() {
         try {
             Statement statement = connection.createStatement();
