@@ -10,15 +10,11 @@ public class Util {
       private static final String USER = "root";
       private static final String PASSWORD = "root";
 
-      public static Connection connection() {
+    public Util() {
 
-          Connection connection = null;
-          try {
-              connection = DriverManager.getConnection(URL, USER, PASSWORD);
-          } catch (SQLException e) {
-              throw new RuntimeException(e);
-          }
+    }
 
-          return connection;
+    public static Connection connection() throws SQLException {
+          return DriverManager.getConnection(URL, USER, PASSWORD);
       }
 }
